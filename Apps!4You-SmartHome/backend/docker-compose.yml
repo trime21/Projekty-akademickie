@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    devices-service:
+        container_name: devices-service
+        build: .
+        volumes:
+            - '.:/app'
+        ports:
+            - 5000:5000
+        environment:
+            - APP_SETTINGS=project.config.DevelopmentConfig
+            - DATABASE_URL=postgres://postgres:postgres@apps4you-database:5432/device_dev
+            - APP_SECRET="aaaaaaaaaaaaaaaaaaa"
+
+    database:
+        container_name: apps4you-database
+        build: ./database
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
