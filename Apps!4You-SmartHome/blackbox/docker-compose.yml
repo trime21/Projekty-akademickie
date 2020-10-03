@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+    app4you-blackbox:
+        container_name: frontend
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: prod
+        ports:
+            - 51342:80
